@@ -14,6 +14,8 @@ colnames(proportions) <- c("Education", "Income", "Proportion")
 # Create a stacked bar plot
 ggplot(proportions, aes(x = Education, y = Proportion, fill = Income)) +
   geom_bar(stat = "identity", position = "stack") +
+  geom_text(aes(label = scales::percent(Proportion)), 
+            position = position_stack(vjust = 0.5), size = 2) +
   theme_minimal() +
   labs(title = "Proportion of Income by Education Level",
        x = "Education Level",
